@@ -29,7 +29,7 @@ const Category = () => {
         className="mySwiper my-24"
       >
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative mb-12">
             <img src={slide1} alt="" />
             <h4 className="absolute left-1/2 -translate-x-1/2 text-center -mt-16 text-3xl uppercase text-white">
               Salads
@@ -37,7 +37,7 @@ const Category = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative mb-12">
             <img src={slide2} alt="" />
             <h4 className="absolute left-1/2 -translate-x-1/2 text-center -mt-16 text-3xl uppercase text-white">
               pizzas
@@ -45,7 +45,7 @@ const Category = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative mb-12">
             <img src={slide3} alt="" />
             <h4 className="absolute left-1/2 -translate-x-1/2 text-center -mt-16 text-3xl uppercase text-white">
               Soups
@@ -53,7 +53,7 @@ const Category = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative mb-12">
             <img src={slide4} alt="" />
             <h4 className="absolute left-1/2 -translate-x-1/2 text-center -mt-16 text-3xl uppercase text-white">
               desserts
@@ -61,7 +61,7 @@ const Category = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative mb-12">
             <img src={slide5} alt="" />
             <h4 className="absolute left-1/2 -translate-x-1/2 text-center -mt-16 text-3xl uppercase text-white">
               Salads
