@@ -15,7 +15,7 @@ const PopularMenu = () => {
   }, []);
 
   return (
-    <section>
+    <section className="container mx-auto">
       <div className="mb-12">
         <SectionTitle
           subHeader={"Popular Items"}

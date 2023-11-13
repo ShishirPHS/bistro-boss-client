@@ -4,7 +4,7 @@ const ChefService = () => {
   return (
     <div
       style={{ backgroundImage: `url(${chefServiceImg})` }}
-      className="mb-24 px-28 py-[120px]"
+      className="mb-24 px-28 py-[120px] container mx-auto"
     >
       <div className="container mx-auto bg-white text-black py-24">
         <h3 className="font-Cinzel text-[#151515] text-[45px] text-center">

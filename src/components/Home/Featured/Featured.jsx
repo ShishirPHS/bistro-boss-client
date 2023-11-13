@@ -6,7 +6,7 @@ const Featured = () => {
   return (
     <div
       style={{ backgroundImage: `url(${featuredImg})` }}
-      className="bg-fixed"
+      className="bg-fixed bg-cover"
     >
       <div className="mt-[50px] mb-32 py-32 bg-[#151515b3]">
         <div className="section-title">
