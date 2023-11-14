@@ -12,7 +12,7 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("reviews.json")
+    fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -29,8 +29,8 @@ const Testimonials = () => {
       </div>
       <div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-          {reviews.map((review) => (
-            <SwiperSlide key={review._id}>
+          {reviews?.map((review) => (
+            <SwiperSlide key={review?._id}>
               <div className="px-20">
                 <div className="flex flex-col items-center justify-center">
                   <Rating
