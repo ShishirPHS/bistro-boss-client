@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import loginBg from "../../assets/others/authentication.png";
 import authenticationImg from "../../assets/others/authentication21.png";
 import {
@@ -7,10 +7,13 @@ import {
   // LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+  const { signInUser } = useContext(AuthContext);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -22,6 +25,15 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleValidateCaptcha = (e) => {
@@ -50,6 +62,7 @@ const Login = () => {
             <img src={authenticationImg} alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <p className="font-bold text-center text-xl pt-6">Please Login!</p>
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -103,6 +116,17 @@ const Login = () => {
                 />
               </div>
             </form>
+            <p className="mb-5 ml-8 -mt-3">
+              <small>
+                New Here?{" "}
+                <Link
+                  to="/signUp"
+                  className="font-semibold text-blue-600 hover:font-bold"
+                >
+                  Create an account
+                </Link>
+              </small>
+            </p>
           </div>
         </div>
       </div>
