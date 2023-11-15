@@ -9,6 +9,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -49,88 +50,95 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{ backgroundImage: `url(${loginBg})` }}
-      className="hero min-h-screen"
-    >
-      <div className="container mx-auto flex justify-center py-20">
-        <div
-          style={{ boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)" }}
-          className="hero-content flex-col lg:flex-row py-14 px-28"
-        >
-          <div className="text-center lg:text-left">
-            <img src={authenticationImg} alt="" />
-          </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <p className="font-bold text-center text-xl pt-6">Please Login!</p>
-            <form onSubmit={handleLogin} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  name="email"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <LoadCanvasTemplate />
-                </label>
-                <input
-                  type="text"
-                  ref={captchaRef}
-                  placeholder="type the captcha above"
-                  name="captcha"
-                  className="input input-bordered"
-                  required
-                />
-                <button
-                  onClick={handleValidateCaptcha}
-                  className="btn btn-sm mt-2 btn-outline"
-                >
-                  Validate
-                </button>
-              </div>
-              <div className="form-control mt-6">
-                <input
-                  disabled={disabled}
-                  className="btn btn-primary"
-                  type="submit"
-                  value="Sign In"
-                />
-              </div>
-            </form>
-            <p className="mb-5 ml-8 -mt-3">
-              <small>
-                New Here?{" "}
-                <Link
-                  to="/signUp"
-                  className="font-semibold text-blue-600 hover:font-bold"
-                >
-                  Create an account
-                </Link>
-              </small>
-            </p>
+    <>
+      <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
+      <div
+        style={{ backgroundImage: `url(${loginBg})` }}
+        className="hero min-h-screen"
+      >
+        <div className="container mx-auto flex justify-center py-20">
+          <div
+            style={{ boxShadow: "10px 10px 10px 10px rgba(0, 0, 0, 0.25)" }}
+            className="hero-content flex-col lg:flex-row py-14 px-28"
+          >
+            <div className="text-center lg:text-left">
+              <img src={authenticationImg} alt="" />
+            </div>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+              <p className="font-bold text-center text-xl pt-6">
+                Please Login!
+              </p>
+              <form onSubmit={handleLogin} className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="email"
+                    name="email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <LoadCanvasTemplate />
+                  </label>
+                  <input
+                    type="text"
+                    ref={captchaRef}
+                    placeholder="type the captcha above"
+                    name="captcha"
+                    className="input input-bordered"
+                    required
+                  />
+                  <button
+                    onClick={handleValidateCaptcha}
+                    className="btn btn-sm mt-2 btn-outline"
+                  >
+                    Validate
+                  </button>
+                </div>
+                <div className="form-control mt-6">
+                  <input
+                    disabled={disabled}
+                    className="btn btn-primary"
+                    type="submit"
+                    value="Sign In"
+                  />
+                </div>
+              </form>
+              <p className="mb-5 ml-8 -mt-3">
+                <small>
+                  New Here?{" "}
+                  <Link
+                    to="/signUp"
+                    className="font-semibold text-blue-600 hover:font-bold"
+                  >
+                    Create an account
+                  </Link>
+                </small>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
