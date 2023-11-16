@@ -1,7 +1,33 @@
 import PropTypes from "prop-types";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
   const { name, image, recipe, price } = item;
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (food) => {
+    if (user && user.email) {
+      // TODO: send cart item to the database
+      console.log(food);
+    } else {
+      Swal.fire({
+        title: "You are not logged in.",
+        text: "Please login to add to the cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Login!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
+  };
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -14,8 +40,13 @@ const FoodCard = ({ item }) => {
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>{recipe}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        <div className="card-actions justify-center">
+          <button
+            onClick={() => handleAddToCart(item)}
+            className="btn btn-outline bg-[#E8E8E8] border-0 border-b-4 mt-6 text-[#BB8506] border-#BB8506"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

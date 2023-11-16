@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -44,14 +45,20 @@ const Navbar = () => {
       <li>
         <NavLink to="/secret">Secret</NavLink>
       </li>
+      <li>
+        <Link to="/">
+          <button className="btn">
+            <FaCartShopping className="text-xl" />
+            <div className="badge badge-secondary">+0</div>
+          </button>
+        </Link>
+      </li>
 
       {user ? (
         <>
-          <li>
-            <button onClick={handleLogOut} className="btn btn-ghost">
-              Log Out
-            </button>
-          </li>
+          <button onClick={handleLogOut} className="btn btn-ghost">
+            Log Out
+          </button>
         </>
       ) : (
         <>
@@ -96,7 +103,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1 items-center">{navLinks}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Button</a>
