@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -185,6 +186,8 @@ const SignUp = () => {
                   </Link>
                 </small>
               </p>
+              <div className="divider px-8"></div>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
