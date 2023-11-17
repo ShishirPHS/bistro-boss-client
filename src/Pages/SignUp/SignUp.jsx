@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
   const {
@@ -16,6 +17,7 @@ const SignUp = () => {
   } = useForm();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
@@ -25,13 +27,22 @@ const SignUp = () => {
 
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            console.log("user info updated");
-            Swal.fire({
-              text: "Sign Up Successful",
-              icon: "success",
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                console.log("user info updated");
+                Swal.fire({
+                  text: "Sign Up Successful",
+                  icon: "success",
+                });
+                reset();
+                navigate("/");
+              }
             });
-            reset();
-            navigate("/");
           })
           .catch((err) => {
             console.log(err);
@@ -39,6 +50,10 @@ const SignUp = () => {
       })
       .catch((err) => {
         console.log(err);
+        Swal.fire({
+          text: err.message,
+          icon: "error",
+        });
       });
   };
 
