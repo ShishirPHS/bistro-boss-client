@@ -13,12 +13,13 @@ import { GiWallet } from "react-icons/gi";
 import { TbAdjustmentsStar } from "react-icons/tb";
 import { RiFileList3Fill } from "react-icons/ri";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   // TODO: get isAdmin value from the database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex container mx-auto">
