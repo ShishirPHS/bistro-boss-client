@@ -1,12 +1,15 @@
-import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 import useAuth from "../../hooks/useAuth";
+import PropTypes from "prop-types";
 
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
+
   const location = useLocation();
 
-  if (loading) {
+  if (loading || isAdminLoading) {
     return (
       <div className="container mx-auto flex items-center justify-center h-[70vh]">
         <div
@@ -20,15 +23,15 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  if (user) {
+  if (user && isAdmin) {
     return children;
   }
 
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-PrivateRoute.propTypes = {
+AdminRoute.propTypes = {
   children: PropTypes.node,
 };
 
-export default PrivateRoute;
+export default AdminRoute;
