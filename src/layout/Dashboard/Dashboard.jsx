@@ -24,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="flex container mx-auto">
       {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-orange-500">
+      <div className="w-64 min-h-screen bg-[#D1A054]">
         <ul className="menu space-y-2">
           {isAdmin ? (
             <>
