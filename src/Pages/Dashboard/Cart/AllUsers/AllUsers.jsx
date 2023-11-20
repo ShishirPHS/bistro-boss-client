@@ -100,7 +100,7 @@ const AllUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user)}
-                    className="btn bg-[#B91C1C] btn-lg"
+                    className="btn bg-[#B91C1C] hover:bg-[#f82929] btn-lg"
                   >
                     <FaTrashAlt className="text-white"></FaTrashAlt>
                   </button>
