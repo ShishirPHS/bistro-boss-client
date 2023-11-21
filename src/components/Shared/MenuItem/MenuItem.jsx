@@ -4,14 +4,14 @@ const MenuItem = ({ item }) => {
   const { name, image, recipe, price } = item;
 
   return (
-    <div className="flex items-start">
+    <div className="flex items-start justify-between">
       <div className="grid grid-cols-10">
         <div className="w-[118px] h-[104px] col-span-2">
           <img
             style={{ borderRadius: "0px 200px 200px 200px" }}
             className="w-full h-full"
             src={image}
-            alt=""
+            alt={`Image of ${name}`}
           />
         </div>
         <div className="col-span-8 ml-8">
