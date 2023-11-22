@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../components/Home/SectionTitle/SectionTitle";
-import "./PaymentHistory.css";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -30,12 +29,12 @@ const PaymentHistory = () => {
         </h2>
         <div className="overflow-x-auto">
           <table className="table table-zebra">
-            <thead className="bg-[#D1A054] text-white table_header_border_radius">
-              <tr className="table_header_border_radius">
-                <th>#</th>
+            <thead className="bg-[#D1A054] text-white">
+              <tr>
+                <th className="rounded-tl-2xl">#</th>
                 <th>Price</th>
                 <th>Transaction Id</th>
-                <th>Status</th>
+                <th className="rounded-tr-2xl">Status</th>
               </tr>
             </thead>
             <tbody>
