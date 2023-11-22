@@ -11,7 +11,6 @@ import {
 import { FaCalendar, FaEnvelope } from "react-icons/fa6";
 import { GiWallet } from "react-icons/gi";
 import { TbAdjustmentsStar } from "react-icons/tb";
-import { RiFileList3Fill } from "react-icons/ri";
 import useCart from "../../hooks/useCart";
 import useAdmin from "../../hooks/useAdmin";
 
@@ -68,15 +67,9 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservation">
+                <NavLink to="/dashboard/history">
                   <FaCalendar></FaCalendar>
-                  Reservation
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/paymentHistory">
-                  <GiWallet></GiWallet>
-                  Payment History
+                  History
                 </NavLink>
               </li>
               <li>
@@ -92,9 +85,9 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addReview">
-                  <RiFileList3Fill></RiFileList3Fill>
-                  My Booking
+                <NavLink to="/dashboard/paymentHistory">
+                  <GiWallet></GiWallet>
+                  Real Payment History
                 </NavLink>
               </li>
             </>
@@ -122,7 +115,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* dashboard content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 bg-[#F6F6F6]">
         <Outlet></Outlet>
       </div>
     </div>
